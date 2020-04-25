@@ -46,6 +46,8 @@ El usuario controlará los movimientos del personaje (eje x / y) mediante los ev
 
 ## Wireframes
 
+(https://imgur.com/ymUlZls)
+
 ## Specs
 ### Classes
 
