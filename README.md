@@ -21,9 +21,11 @@ Para testear el MVP se requiere:
 - Que el personaje **se mueva arriba**. El usuario controlará los movimientos del personaje (eje y) 
 - Que el fondo se mueva hacia la izquierda
 - Que aparezca **1 tipo de elementos** que sumen puntos
-- Que si el personaje toca un elemto que suma puntos, se incremente el score en 1
 - Que aparezcan obstaculos de tipo "coronavirus"
 - Que si el personaje toca un obstaculo de tipo "coronavirus" se termine el juego
+
+### User Stories
+- Como jugador quiero recojer el máximo de elementos para sumar puntos y ganar la partida
 
 ## Technologies
 
@@ -31,21 +33,6 @@ El juego se desarrollará usando las tecnologías:
 
 - DOM Manipulation
 - Canvas
-
-## Levels
-
-- El juego consta de 3 niveles.
-- A mayor nivel mayor es la velocidad con que transcurre acción y más obstáculos son añadidos al juego.
-- El nivel de dificultad incrementa en base a la puntuación.
-
-## Elementos
-
-Suman puntos:
-- Mascarillas
-- Papel de vater
-
-Obstáculos:
-- Coronavirus
 
 ## Wireframes
 
@@ -58,8 +45,15 @@ Obstáculos:
 ---
 
 # Backlog
+
+## User Stories
+
+- Como jugador quiero recojer el máximo de TODOS los elementos para sumar puntos y ganar la partida
+- Como jugador quiero recojer elementos para sumar puntos para subir de nivel e incrementar la dificultad
+
 ## Specs
 
+### User Name + Character Selection
 Al cargar la página se muestra el nombre del juego, se carga el canvas y el botón "Play Now".
 Al hacer click al botón "Play now" el user define su nombre via un input y selecciona el personaje con el que quiere interactuar en función del gender y color de piel.
 
@@ -68,7 +62,26 @@ Una vez seleccionado nombre y personaje, se carga la interfaz del juego, el cual
 - Background dinámico que corre horizontalmente hacia la izquierda
 - Personaje posicionado en x: 10, y: canvas.height/1.5;
 
-### Classes
+### Interaction
+
+- El usuario se puede mover arriba y abajo
+
+### Levels
+
+- El juego consta de 3 niveles.
+- A mayor nivel mayor es la velocidad con que transcurre acción y más obstáculos son añadidos al juego.
+- El nivel de dificultad incrementa en base a la puntuación.
+
+### Elements
+
+Suman puntos:
+- Mascarillas
+- Papel de vater
+
+Obstáculos:
+- Coronavirus
+
+## Classes
 
 - class Character();
 - cass Obstacle();
