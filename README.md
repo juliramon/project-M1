@@ -53,6 +53,7 @@ Obstáculos:
 ![Alt text](https://i.imgur.com/1RvcSx7.jpg)
 ![Alt text](https://i.imgur.com/ymUlZls.jpg)
 ![Alt text](https://i.imgur.com/9wWwPxf.jpg)
+![Alt text](https://i.imgur.com/jiINQQw.jpg)
 
 ---
 
