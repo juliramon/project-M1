@@ -1,11 +1,12 @@
 # COVID-19 GAME
 
+Al cargar la página se muestra el nombre del juego, se carga el canvas y el botón "Play Now".
 Al hacer click al botón "Play now" el user define su nombre via un input y selecciona el personaje con el que quiere interactuar en función del gender y color de piel.
 
-Una vez seleccionado nombre y personaje, se carga la interfaz del juego (canvas), el cual consta de: 
+Una vez seleccionado nombre y personaje, se carga la interfaz del juego, el cual consta de: 
 
 - Background dinámico que corre horizontalmente hacia la izquierda
-- Personaje posicionado en x: 10, y: canvas.height/2;
+- Personaje posicionado en x: 10, y: canvas.height/1.5;
 
 El usuario debe esquivar los diferentes obstáculos que irán apareciendo y se listan más abajo.
 
@@ -22,7 +23,7 @@ El usuario controlará los movimientos del personaje (eje x / y) mediante los ev
 
 - arrowRight = desplazará el personaje n pixels hacia la derecha
 - arrowUp = desplazará el personaje n pixels hacía arriba
-- arrowDown = desplaçará el personaje n pixels hacía abajo
+- arrowDown = se reduce el height del personaje a la mitad
 
 ## Levels
 
@@ -39,3 +40,20 @@ El usuario controlará los movimientos del personaje (eje x / y) mediante los ev
 
 - El usuario gana cuando se alcanza la puntuación máxima ¿?
 - El usuario pierde cuando el personaje contacta con un objeto tipo "coronavirus"
+-- Cuando el usuario pierde:
+--- Se muestra la puntuación obtenida
+--- Se muestre el botón "Play again"
+
+## Wireframes
+
+## Specs
+### Classes
+
+- class Character();
+- cass Obstacle();
+- class Mask();
+
+## Functions
+
+- updateCanvas(); 
+- keyboardControls();
