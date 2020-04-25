@@ -1,4 +1,4 @@
-# CODI-19 GAME
+# COVID-19 GAME
 
 Al hacer click al botón "Play now" el user define su nombre via un input y selecciona el personaje con el que quiere interactuar en función del gender y color de piel.
 
