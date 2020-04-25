@@ -1,5 +1,7 @@
-# COVID-19 GAME
+# COVID-19 RUN!
 ## Description
+
+Mi primer proyecto se trata de un juego de plataformas. El jugador tiene que atrapar el máximo de elementos posibles para sumar el máximo de puntos, esquivando los obstáculos que irán apareciendo.
 
 Al cargar la página se muestra el nombre del juego, se carga el canvas y el botón "Play Now".
 Al hacer click al botón "Play now" el user define su nombre via un input y selecciona el personaje con el que quiere interactuar en función del gender y color de piel.
@@ -9,7 +11,29 @@ Una vez seleccionado nombre y personaje, se carga la interfaz del juego, el cual
 - Background dinámico que corre horizontalmente hacia la izquierda
 - Personaje posicionado en x: 10, y: canvas.height/1.5;
 
-El usuario debe esquivar los diferentes obstáculos que irán apareciendo y se listan más abajo.
+## Game rules
+
+- El usuario puede desplazarse arriba y abajo
+- El usuario debe recojer la mayor cantidad de elementos positivos posibles para sumar puntos y ganar
+- El usuario debe esquivar los obstáculos usando las arrows del teclado para no perder
+- El usuario pierde cuando el personaje contacta con un obstáculo tipo "coronavirus"
+-- Cuando el usuario pierde:
+--- Se muestra la puntuación obtenida
+--- Se muestre el botón "Play again"
+
+## Product MVP
+
+Para testear el MVP se requiere:
+- Que se inicialize el juego
+- Crear 1 personaje
+- Que el personaje se mueva arriba y abajo. El usuario controlará los movimientos del personaje (eje y) mediante los eventos keydown:
+-- arrowUp = desplazará el personaje n pixels hacía arriba
+-- arrowDown = se reduce el height del personaje a la mitad
+- Que el fondo se mueva hacia la izquierda
+- Que aparezcan elementos que sumen puntos
+- Que si el personaje toca un elemto que suma puntos, se incremente el score en 1
+- Que aparezcan obstaculos de tipo "coronavirus"
+- Que si el personaje toca un obstaculo de tipo "coronavirus" se termine el juego
 
 ## Technologies
 
@@ -18,32 +42,20 @@ El juego se desarrollará usando las tecnologías:
 - DOM Manipulation
 - Canvas
 
-## User Interaction
-
-El usuario controlará los movimientos del personaje (eje x / y) mediante los eventos keydown:
-
-- arrowRight = desplazará el personaje n pixels hacia la derecha
-- arrowUp = desplazará el personaje n pixels hacía arriba
-- arrowDown = se reduce el height del personaje a la mitad
-
 ## Levels
 
 - El juego consta de 3 niveles.
 - A mayor nivel mayor es la velocidad con que transcurre acción y más obstáculos son añadidos al juego.
 - El nivel de dificultad incrementa en base a la puntuación.
 
-## Objetivos y Puntuación
+## Elementos
 
-- El usuario debe recojer la mayor cantidad de mascarillas posible
-- El usuario debe esquivar los obstáculos añadidos al juego usando las arrows del teclado
+Suman puntos:
+- Mascarillas
+- Papel de vater
 
-## Lógica Win/Loose
-
-- El usuario gana cuando se alcanza la puntuación máxima ¿?
-- El usuario pierde cuando el personaje contacta con un objeto tipo "coronavirus"
--- Cuando el usuario pierde:
---- Se muestra la puntuación obtenida
---- Se muestre el botón "Play again"
+Obstáculos:
+- Coronavirus
 
 ## Wireframes
 
@@ -52,7 +64,9 @@ El usuario controlará los movimientos del personaje (eje x / y) mediante los ev
 ![Alt text](https://i.imgur.com/ymUlZls.jpg)
 ![Alt text](https://i.imgur.com/9wWwPxf.jpg)
 
+---
 
+# Backlog
 ## Specs
 ### Classes
 
