@@ -3,17 +3,9 @@
 
 Mi primer proyecto se trata de un juego de plataformas. El jugador tiene que atrapar el máximo de elementos posibles para sumar el máximo de puntos, esquivando los obstáculos que irán apareciendo.
 
-Al cargar la página se muestra el nombre del juego, se carga el canvas y el botón "Play Now".
-Al hacer click al botón "Play now" el user define su nombre via un input y selecciona el personaje con el que quiere interactuar en función del gender y color de piel.
-
-Una vez seleccionado nombre y personaje, se carga la interfaz del juego, el cual consta de: 
-
-- Background dinámico que corre horizontalmente hacia la izquierda
-- Personaje posicionado en x: 10, y: canvas.height/1.5;
-
 ## Game rules
 
-- El usuario puede desplazarse arriba y abajo
+- El usuario puede desplazarse arriba y abajo mediante los eventos keydown: arrowUp = desplazará el personaje n pixels hacía arriba y arrowDown = reducirá el height del personaje a la mitad
 - El usuario debe recojer la mayor cantidad de elementos positivos posibles para sumar puntos y ganar
 - El usuario debe esquivar los obstáculos usando las arrows del teclado para no perder
 - El usuario pierde cuando el personaje contacta con un obstáculo tipo "coronavirus"
@@ -25,10 +17,8 @@ Una vez seleccionado nombre y personaje, se carga la interfaz del juego, el cual
 
 Para testear el MVP se requiere:
 - Que se inicialize el juego
-- Crear 1 personaje
-- Que el personaje se mueva arriba y abajo. El usuario controlará los movimientos del personaje (eje y) mediante los eventos keydown:
--- arrowUp = desplazará el personaje n pixels hacía arriba
--- arrowDown = se reduce el height del personaje a la mitad
+- Que se cree 1 personaje
+- Que el personaje se mueva arriba y abajo. El usuario controlará los movimientos del personaje (eje y) 
 - Que el fondo se mueva hacia la izquierda
 - Que aparezcan elementos que sumen puntos
 - Que si el personaje toca un elemto que suma puntos, se incremente el score en 1
@@ -68,6 +58,15 @@ Obstáculos:
 
 # Backlog
 ## Specs
+
+Al cargar la página se muestra el nombre del juego, se carga el canvas y el botón "Play Now".
+Al hacer click al botón "Play now" el user define su nombre via un input y selecciona el personaje con el que quiere interactuar en función del gender y color de piel.
+
+Una vez seleccionado nombre y personaje, se carga la interfaz del juego, el cual consta de: 
+
+- Background dinámico que corre horizontalmente hacia la izquierda
+- Personaje posicionado en x: 10, y: canvas.height/1.5;
+
 ### Classes
 
 - class Character();
