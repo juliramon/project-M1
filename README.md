@@ -26,6 +26,7 @@ Para testear el MVP se requiere:
 
 ### User Stories
 - Como jugador quiero recojer el máximo de elementos para sumar puntos y ganar la partida
+- Como jugador, si toco un obstaculo de tipo "coronavirus" se tiene que terminar el juego
 
 ## Backlog
 
