@@ -18,9 +18,9 @@ Mi primer proyecto se trata de un juego de plataformas. El jugador tiene que atr
 Para testear el MVP se requiere:
 - Que se inicialize el juego
 - Que se cree 1 personaje
-- Que el personaje se mueva arriba y abajo. El usuario controlará los movimientos del personaje (eje y) 
+- Que el personaje se mueva arriba. El usuario controlará los movimientos del personaje (eje y) 
 - Que el fondo se mueva hacia la izquierda
-- Que aparezcan elementos que sumen puntos
+- Que aparezca 1 tipo de elementos que sumen puntos
 - Que si el personaje toca un elemto que suma puntos, se incremente el score en 1
 - Que aparezcan obstaculos de tipo "coronavirus"
 - Que si el personaje toca un obstaculo de tipo "coronavirus" se termine el juego
