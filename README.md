@@ -1,9 +1,9 @@
 # COVID-19 RUN!
-## Description
+## Descripción
 
 Mi primer proyecto se trata de un juego de plataformas. El jugador tiene que atrapar el máximo de elementos posibles para sumar el máximo de puntos, esquivando los obstáculos que irán apareciendo.
 
-## Game rules
+## Reglas del juego
 
 - El usuario puede desplazarse arriba y abajo mediante los eventos keydown: arrowUp = desplazará el personaje n pixels hacía arriba y arrowDown = reducirá el height del personaje a la mitad
 - El usuario debe recojer la mayor cantidad de elementos positivos posibles para sumar puntos y ganar
@@ -13,7 +13,7 @@ Mi primer proyecto se trata de un juego de plataformas. El jugador tiene que atr
 --- Se muestra la puntuación obtenida
 --- Se muestre el botón "Play again"
 
-## Product MVP
+## MPV - User stories
 
 Para testear el MVP se requiere:
 - Que se inicialize el juego
@@ -27,12 +27,29 @@ Para testear el MVP se requiere:
 ### User Stories
 - Como jugador quiero recojer el máximo de elementos para sumar puntos y ganar la partida
 
-## Technologies
+## Backlog
 
-El juego se desarrollará usando las tecnologías:
+Al cargar la página se muestra el nombre del juego, se carga el canvas y el botón "Play Now".
 
-- DOM Manipulation
-- Canvas
+### User Stories
+
+- Como jugador, quiero poder definir mi nombre
+- Como jugador quiero poder seleccionar el personaje con el que jugaré
+- Como jugador quiero recojer el máximo de elementos para sumar puntos y ganar la partida
+- Como jugador quiero sumar puntos para subir de nivel
+- Como jugador quiero subir de nivel para incrementar la dificultad
+- Como jugador, si pierdo el juego, quiero ver el total de puntos que he hecho
+
+## Links
+
+### Git
+Repositorio: https://github.com/juliramon/project-M1
+
+### Slides
+
+### Kanban
+
+---
 
 ## Wireframes
 
@@ -42,56 +59,9 @@ El juego se desarrollará usando las tecnologías:
 ![Alt text](https://i.imgur.com/9wWwPxf.jpg)
 ![Alt text](https://i.imgur.com/jiINQQw.jpg)
 
----
+## Technologies
 
-# Backlog
+El juego se desarrollará usando las tecnologías:
 
-## User Stories
-
-- Como jugador, quiero poder definir mi nombre
-- Como jugador quiero poder seleccionar el personaje con el que jugaré
-- Como jugador quiero recojer el máximo de elementos para sumar puntos y ganar la partida
-- Como jugador quiero sumar puntos para subir de nivel
-- Como jugador quiero subir de nivel para incrementar la dificultad
-- Como jugador, si pierdo el juego, quiero ver el total de puntos que he hecho
-
-## Specs
-
-### User Name + Character Selection
-Al cargar la página se muestra el nombre del juego, se carga el canvas y el botón "Play Now".
-Al hacer click al botón "Play now" el user define su nombre via un input y selecciona el personaje con el que quiere interactuar en función del gender y color de piel.
-
-Una vez seleccionado nombre y personaje, se carga la interfaz del juego, el cual consta de: 
-
-- Background dinámico que corre horizontalmente hacia la izquierda
-- Personaje posicionado en x: 10, y: canvas.height/1.5;
-
-### Interaction
-
-- El usuario se puede mover arriba y abajo
-
-### Levels
-
-- El juego consta de 3 niveles.
-- A mayor nivel mayor es la velocidad con que transcurre acción y más obstáculos son añadidos al juego.
-- El nivel de dificultad incrementa en base a la puntuación.
-
-### Elements
-
-Suman puntos:
-- Mascarillas
-- Papel de vater
-
-Obstáculos:
-- Coronavirus
-
-## Classes
-
-- class Character();
-- cass Obstacle();
-- class Mask();
-
-## Functions
-
-- updateCanvas(); 
-- keyboardControls();
+- DOM Manipulation
+- Canvas
