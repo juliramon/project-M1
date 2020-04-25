@@ -1,4 +1,5 @@
 # COVID-19 GAME
+## Description
 
 Al cargar la página se muestra el nombre del juego, se carga el canvas y el botón "Play Now".
 Al hacer click al botón "Play now" el user define su nombre via un input y selecciona el personaje con el que quiere interactuar en función del gender y color de piel.
@@ -47,9 +48,9 @@ El usuario controlará los movimientos del personaje (eje x / y) mediante los ev
 ## Wireframes
 
 ![Alt text](https://i.imgur.com/S58VEpP.jpg)
-![Alt text](https://i.imgur.com/NeqZy7y.jpg)
+![Alt text](https://i.imgur.com/1RvcSx7.jpg)
 ![Alt text](https://i.imgur.com/ymUlZls.jpg)
-![Alt text](https://i.imgur.com/fYfkuAV.jpg)
+![Alt text](https://i.imgur.com/9wWwPxf.jpg)
 
 
 ## Specs
