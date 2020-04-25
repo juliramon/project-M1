@@ -46,8 +46,7 @@ El usuario controlará los movimientos del personaje (eje x / y) mediante los ev
 
 ## Wireframes
 
-![alt text]
-(https://i.imgur.com/ymUlZls.jpg)
+![Alt text](https://i.imgur.com/ymUlZls.jpg)
 
 ## Specs
 ### Classes
