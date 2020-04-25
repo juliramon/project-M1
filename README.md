@@ -1,4 +1,4 @@
-# COVID-19 RUN!
+# COVID19 RUN!
 ## Descripción
 
 Mi primer proyecto se trata de un juego de plataformas. El jugador tiene que atrapar el máximo de elementos posibles para sumar el máximo de puntos, esquivando los obstáculos que irán apareciendo.
@@ -45,12 +45,13 @@ Al cargar la página se muestra el nombre del juego, se carga el canvas y el bot
 
 ## Links
 
+### Kanban
+Jira: https://juli-ironhack.atlassian.net/secure/RapidBoard.jspa?projectKey=PM&rapidView=1&atlOrigin=eyJpIjoiNmE5MWU1NzE2ZWM5NDdjZGJjOGQ2NTlmOTZkZGI4OGQiLCJwIjoiaiJ9
+
 ### Git
 Repositorio: https://github.com/juliramon/project-M1
 
 ### Slides
-
-### Kanban
 
 ---
 
