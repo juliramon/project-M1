@@ -48,8 +48,12 @@ El juego se desarrollará usando las tecnologías:
 
 ## User Stories
 
-- Como jugador quiero recojer el máximo de TODOS los elementos para sumar puntos y ganar la partida
-- Como jugador quiero recojer elementos para sumar puntos para subir de nivel e incrementar la dificultad
+- Como jugador, quiero poder definir mi nombre
+- Como jugador quiero poder seleccionar el personaje con el que jugaré
+- Como jugador quiero recojer el máximo de elementos para sumar puntos y ganar la partida
+- Como jugador quiero sumar puntos para subir de nivel
+- Como jugador quiero subir de nivel para incrementar la dificultad
+- Como jugador, si pierdo el juego, quiero ver el total de puntos que he hecho
 
 ## Specs
 
