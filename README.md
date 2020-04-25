@@ -25,6 +25,7 @@ Para testear el MVP se requiere:
 - Que si el personaje toca un obstaculo de tipo "coronavirus" se termine el juego
 
 ### User Stories
+- Como jugador quiero poder saltar (arrowUp) para esquivar los obstáculos
 - Como jugador quiero recojer el máximo de elementos para sumar puntos y ganar la partida
 - Como jugador, si toco un obstaculo de tipo "coronavirus" se tiene que terminar el juego
 
@@ -36,6 +37,7 @@ Al cargar la página se muestra el nombre del juego, se carga el canvas y el bot
 
 - Como jugador, quiero poder definir mi nombre
 - Como jugador quiero poder seleccionar el personaje con el que jugaré
+- Como jugador quiero poder saltar (arrowUp) y agacharme (arrowDown) para esquivar los obstáculos
 - Como jugador quiero recojer el máximo de elementos para sumar puntos y ganar la partida
 - Como jugador quiero sumar puntos para subir de nivel
 - Como jugador quiero subir de nivel para incrementar la dificultad
