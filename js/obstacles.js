@@ -1,6 +1,7 @@
 let obstacles = {
     obstacles: [],
     speedX: 10,
+    period: 0,
     initialize: function () {
         let singleObstacle = {
             x: canvas.width,

@@ -1,6 +1,7 @@
 let health = {
     item: [],
     speedX: 10,
+    period: 3000,
     initialize: function () {
         let singleObstacle = {
             x: canvas.width,

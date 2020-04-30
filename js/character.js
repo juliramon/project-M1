@@ -42,11 +42,11 @@ let character = {
         let obsRight = item.x + (item.width);
         let obsTop = item.y;
         let obsBottom = item.y + (item.height);
-        let crash = true;
 
-        (bottom < obsTop) || (top > obsBottom) || (right < obsLeft) || (left > obsRight) ? crash = false: null;
-
-        return crash;
+        if ((bottom < obsTop) || (top > obsBottom) || (right < obsLeft) || (left > obsRight)) {
+            return false;
+        }
+        return true;
     },
     checkCrash: function () {
         obstacles.obstacles.forEach(obs => character.crash(obs) ? gameOver() : null);

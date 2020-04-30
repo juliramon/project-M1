@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="17px" viewBox="0 0 12 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63 (92445) - https://sketch.com -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Media" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M-2.87867966,5.36396103 L3.87867966,12.1213203 C5.05025253,13.2928932 5.05025253,15.1923882 3.87867966,16.363961 C3.31607052,16.9265702 2.55300878,17.2426407 1.75735931,17.2426407 L-5,17.2426407 C-6.65685425,17.2426407 -8,15.8994949 -8,14.2426407 L-8,7.48528137 C-8,5.82842712 -6.65685425,4.48528137 -5,4.48528137 C-4.20435053,4.48528137 -3.44128879,4.8013519 -2.87867966,5.36396103 Z" id="Rectangle" fill="#F2C600" transform="translate(0.500000, 8.742641) rotate(225.000000) translate(-0.500000, -8.742641) "></path>
+    </g>
+</svg>

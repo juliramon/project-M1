@@ -2,6 +2,7 @@ body {
     overflow: hidden;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -9,11 +10,15 @@ main {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    flex-flow: column;
 }
 
-canvas {
-    margin-top: -15px;
+#canvas {
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
     position: relative;
+    border-radius: 10px;
 }
 
 .canvas-wrapper {
@@ -22,15 +27,30 @@ canvas {
     height: auto;
 }
 
-h1,
-h2 {
-    text-align: center;
-    margin: 0;
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#canvas {
-    border: 1px solid #ccc;
-    display: block;
-    margin: 0 auto;
+button#play {
+    background-color: #82368C;
+    border-radius: 10px;
+    border: none;
+    font-size: 22px;
+    color: #ffffff;
+    padding: 20px 30px;
     margin-top: 30px;
+}
+
+main p {
+    font-size: 12px;
+    color: #333;
+    position: absolute;
+    bottom: 0;
+}
+
+main p a {
+    text-decoration: none;
+    color: #82368C;
 }
