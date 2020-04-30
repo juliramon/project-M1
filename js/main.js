@@ -1,18 +1,19 @@
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
+let requestId = undefined;
+let int1 = undefined;
+let int2 = undefined;
 
 let buttonPlay = document.querySelector('button');
 buttonPlay.addEventListener('click', startGame);
 
 function startGame() {
+    buttonPlay.innerHTML = 'Pause';
     obstacles.initialize();
-    setInterval(() => obstacles.initialize(), 5000);
-    setInterval(() => health.initialize(), 3000);
+    int1 = setInterval(() => obstacles.initialize(), 5000);
+    int2 = setInterval(() => health.initialize(), 3000);
     document.addEventListener('keydown', getKeyDown);
     document.addEventListener('keyup', getKeyUp);
-    buttonPlay.removeEventListener('click', startGame);
-    buttonPlay.innerHTML = 'Pause game';
-    buttonPlay.addEventListener('click', pauseGame);
     updateCanvas();
 }
 
@@ -30,8 +31,6 @@ function getKeyUp(event) {
     }
 }
 
-let requestId = undefined;
-
 function updateCanvas() {
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -47,15 +46,23 @@ function updateCanvas() {
     ctx.restore();
 }
 
-function pauseGame() {
-    cancelAnimationFrame(requestId);
-    buttonPlay.removeEventListener('click', pauseGame);
-    buttonPlay.innerHTML = 'Resume game';
-    buttonPlay.addEventListener('click', startGame);
-}
-
 function gameOver() {
     cancelAnimationFrame(requestId);
+    buttonPlay.removeEventListener('click', startGame);
     buttonPlay.innerHTML = 'Try again';
-    buttonPlay.addEventListener('click', startGame);
+    buttonPlay.addEventListener('click', cleanGame);
 };
+
+function cleanGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    clearInterval(int1);
+    clearInterval(int2);
+    obstacles.obstacles = [];
+    health.item = [];
+    character.lives = 0;
+    background.frames = 0;
+    buttonPlay.removeEventListener('click', cleanGame);
+    buttonPlay.innerHTML = 'Pause';
+    buttonPlay.addEventListener('click', startGame);
+    startGame();
+}

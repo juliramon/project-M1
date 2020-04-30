@@ -11,7 +11,7 @@ let background = {
     width: canvas.width,
     height: canvas.height,
     speed: -2,
-    frames: 0,
+    frames: Math.round(0),
     move: function () {
         this.x += this.speed;
         this.x %= canvas.width;
