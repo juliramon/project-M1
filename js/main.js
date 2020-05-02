@@ -1,15 +1,16 @@
-let canvas = document.querySelector('canvas');
+let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
-let requestId = undefined;
-let interval = undefined;
-let int2 = undefined;
+canvas.width = 900;
+canvas.height = 400;
+let requestId, interval, int2;
 
 function startGame() {
     buttonPlay.removeEventListener('click', startGame);
     buttonPlay.innerHTML = 'Pause game';
+    buttonPlay.addEventListener('click', pauseGame);
     obstacles.frequency = 5000;
     obstacles.initialize();
-    int2 = setInterval(() => health.initialize(), 3000);
+    //int2 = setInterval(() => health.initialize(), 3000);
     document.addEventListener('keydown', getKeyDown);
     document.addEventListener('keyup', getKeyUp);
     intervals();
@@ -17,9 +18,9 @@ function startGame() {
 }
 
 function getKeyDown(event) {
-    if (event.code == 'ArrowUp' && character.y >= 430) {
+    if (event.code == 'ArrowUp' && character.y >= 240) {
         character.gravity = -2.2;
-    } else if (event.code == 'ArrowUp' && character.y !== 430) {
+    } else if (event.code == 'ArrowUp' && character.y !== 240) {
         getKeyUp(event);
     }
 }
@@ -27,9 +28,6 @@ function getKeyDown(event) {
 function getKeyUp(event) {
     if (event.code == 'ArrowUp') {
         character.gravity = 0.6;
-    }
-    if (event.code == 'ArrowDown') {
-        character.img.src = './img/doctor.svg';
     }
 }
 
@@ -56,11 +54,10 @@ function intervals() {
         }, obstacles.frequency);
 }
 
-function gameOver() {
+function stopGame() {
     cancelAnimationFrame(requestId);
-    buttonPlay.removeEventListener('click', startGame);
-    buttonPlay.innerHTML = 'Start again'
-    buttonPlay.addEventListener('click', cleanGame);
+    buttonPause.innerHTML = 'Play again';
+    buttonPause.addEventListener('click', cleanGame);
 };
 
 function cleanGame() {
@@ -73,4 +70,12 @@ function cleanGame() {
     obstacles.frequency = 0;
     clearInterval(interval);
     startGame();
+}
+
+function pauseGame() {
+    cancelAnimationFrame(requestId);
+    clearInterval(interval);
+    buttonPause.removeEventListener('click', pauseGame);
+    buttonPause.innerHTML = 'Resume game';
+    buttonPause.addEventListener('click', updateCanvas);
 }

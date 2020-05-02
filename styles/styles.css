@@ -1,15 +1,11 @@
 :root {
-    --main-font: Arial, Helvetica, sans-serif;
+    --main-font: 'Nunito', sans-serif;
     --main-color: #82368C;
     --secondary-color: #d60b52;
-}
-
-
-body {
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    font-family: var(--main-font);
+    --white: #ffffff;
+    --yellow: #f2c600;
+    --bg-game-blur: url('../img/bg-game-2.png');
+    --bg-game: url('../img/bg-game.png');
 }
 
 input:focus,
@@ -19,36 +15,53 @@ button:focus {
     outline: none;
 }
 
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: var(--main-font);
+    background-image: var(--bg-game-blur);
+    background-size: cover;
+}
+
+#particles-js {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
 main {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    flex-flow: column;
+    flex-direction: column;
+    height: 100%;
 }
 
-#canvas {
-    display: block;
+.header img {
     margin: 0 auto;
-    margin-top: 30px;
-    position: relative;
-    border-radius: 10px;
+    display: block;
 }
 
 .canvas-wrapper {
-    display: block;
-    width: auto;
-    height: auto;
+    margin-top: 50px;
+    position: relative;
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#canvas {
+    border-radius: 10px;
+    box-shadow: 0 0 0 .7em var(--white);
+    display: block;
+    margin: 0 auto;
+    background: var(--bg-game);
 }
 
 .input-wrapper {
-    margin-top: 45px;
+    position: absolute;
+    z-index: 100;
+    top: 160px;
+    right: 120px;
 }
 
 .input-wrapper input {
@@ -62,22 +75,37 @@ main {
     font-weight: bold;
 }
 
-button#play {
+button {
     background-color: var(--main-color);
     border-radius: 10px;
     border: none;
-    font-size: 22px;
+    font-family: var(--main-font);
     color: #ffffff;
+}
+
+button#play {
+    font-size: 22px;
     padding: 20px 30px;
 }
 
-main p {
+button#pause {
+    font-size: 14px;
+    padding: 10px 20px;
+    position: absolute;
+    right: 40px;
+    top: 17px;
+}
+
+footer p {
+    color: var(--white);
     font-size: small;
     position: absolute;
     bottom: 0;
+    text-align: center;
+    width: 100%;
 }
 
-main p a {
+footer p a {
     text-decoration: none;
-    color: var(--main-color);
+    color: var(--yellow);
 }

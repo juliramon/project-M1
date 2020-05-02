@@ -1,7 +1,6 @@
 let background = {
     img: new Image(),
-    x: canvas.width,
-    y: 0,
+    x: 0,
     width: canvas.width,
     height: canvas.height,
     speed: -2,
@@ -11,7 +10,7 @@ let background = {
         this.x %= canvas.width;
     },
     show: function () {
-        this.img.src = './img/bg-game.svg';
+        this.img.src = './img/bg-game.png';
         ctx.drawImage(this.img, this.x, 0);
         ctx.drawImage(this.img, this.x - this.img.width + 1, 0);
         this.x += this.speed;
@@ -19,4 +18,4 @@ let background = {
             this.x = canvas.width;
         }
     }
-}
+};
