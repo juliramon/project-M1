@@ -2,15 +2,14 @@ let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 canvas.width = 900;
 canvas.height = 400;
-let requestId, interval, int2;
+let requestId, intervalObs, intervalHealth;
 
 function startGame() {
     buttonPlay.removeEventListener('click', startGame);
     buttonPlay.innerHTML = 'Pause game';
     buttonPlay.addEventListener('click', pauseGame);
-    obstacles.frequency = 5000;
-    obstacles.initialize();
-    //int2 = setInterval(() => health.initialize(), 3000);
+    obstacles.frequency = 4000;
+    health.frequency = 7000;
     document.addEventListener('keydown', getKeyDown);
     document.addEventListener('keyup', getKeyUp);
     intervals();
@@ -36,6 +35,7 @@ function updateCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     background.show();
     character.show();
+    character.walk();
     character.newPos();
     obstacles.show();
     health.show();
@@ -48,10 +48,14 @@ function updateCanvas() {
 }
 
 function intervals() {
-    interval = setInterval(
+    intervalObs = setInterval(
         function () {
             obstacles.initialize();
         }, obstacles.frequency);
+    intervalHealth = setInterval(
+        function () {
+            health.initialize();
+        }, health.frequency);
 }
 
 function stopGame() {

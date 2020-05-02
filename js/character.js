@@ -1,6 +1,6 @@
 let character = {
     img: new Image(),
-    x: 50,
+    x: 0,
     y: 240,
     width: 110,
     height: 110,
@@ -11,6 +11,11 @@ let character = {
     lives: 0,
     timer: 300,
     transition: 0,
+    walk: function () {
+        if (this.x < 100) {
+            this.x += 1;
+        }
+    },
     show: function () {
         this.img.src = './img/doctor.svg';
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -36,10 +41,10 @@ let character = {
         }
     },
     crash: function (item) {
-        let left = this.x + 50;
-        let right = this.x + (this.width) - 30;
+        let left = this.x;
+        let right = this.x + (this.width);
         let top = this.y;
-        let bottom = this.y + (this.height) - 30;
+        let bottom = this.y + (this.height) - 50;
         let obsLeft = item.x;
         let obsRight = item.x + (item.width);
         let obsTop = item.y;
@@ -52,6 +57,13 @@ let character = {
     },
     checkCrash: function () {
         obstacles.obstacles.forEach(obs => character.crash(obs) ? stopGame() : null);
-        health.item.forEach(item => character.crash(item) ? character.lives++ : null);
+        health.item.forEach(item => {
+            if (character.crash(item)) {
+                character.lives++;
+                if (character.x > item.x) {
+                    item.y -= 800;
+                }
+            }
+        });
     }
 }

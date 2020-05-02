@@ -42,6 +42,7 @@ main {
 .header img {
     margin: 0 auto;
     display: block;
+    margin-top: -50px;
 }
 
 .canvas-wrapper {
@@ -92,7 +93,7 @@ button#pause {
     font-size: 14px;
     padding: 10px 20px;
     position: absolute;
-    right: 40px;
+    right: 30px;
     top: 17px;
 }
 

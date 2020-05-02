@@ -1,9 +1,9 @@
 function showScore() {
     ctx.font = '18px Nunito';
     ctx.fillStyle = '#82368c';
-    ctx.fillText(`Points: ${Math.round(background.frames / 5)}`, character.x, 40);
-    ctx.fillText(`Lives: ${Math.round(character.lives / 14)}`, character.x + 150, 40);
-    ctx.fillText(`${playerName}`, character.x + 290, 40);
+    ctx.fillText(`Points: ${Math.round(background.frames / 5)}`, 30, 40);
+    ctx.fillText(`Lives: ${Math.round(character.lives / 14)}`, 150, 40);
+    ctx.fillText(`${playerName}`, 250, 40);
 }
 
 function increaseDifficulty() {
@@ -13,8 +13,8 @@ function increaseDifficulty() {
         if (background.frames / 5 === cp) {
             console.log('checkpointL1' + cp);
             obstacles.frequency -= 1000;
-            clearInterval(interval);
-            interval = setInterval(
+            clearInterval(intervalObs);
+            intervalObs = setInterval(
                 function () {
                     obstacles.initialize();
                 }, obstacles.frequency);
@@ -24,8 +24,8 @@ function increaseDifficulty() {
         if (background.frames / 5 === cp) {
             console.log('checkpointL2' + cp);
             obstacles.frequency -= Math.floor(Math.random() * (1000 - 100 + 1) + 100);
-            clearInterval(interval);
-            interval = setInterval(
+            clearInterval(intervalObs);
+            intervalObs = setInterval(
                 function () {
                     obstacles.initialize();
                 }, obstacles.frequency);
