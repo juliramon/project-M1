@@ -1,9 +1,3 @@
-let bg = document.querySelector('body');
-let red = Math.floor(Math.random() * 255);
-let green = Math.floor(Math.random() * 255);
-let blue = Math.floor(Math.random() * 255);
-
-
 let background = {
     img: new Image(),
     x: canvas.width,
@@ -11,7 +5,7 @@ let background = {
     width: canvas.width,
     height: canvas.height,
     speed: -2,
-    frames: Math.round(0),
+    frames: 0,
     move: function () {
         this.x += this.speed;
         this.x %= canvas.width;

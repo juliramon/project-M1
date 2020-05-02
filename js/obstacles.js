@@ -1,12 +1,12 @@
 let obstacles = {
     obstacles: [],
     speedX: 10,
-    period: 0,
+    frequency: 0,
     initialize: function () {
         let singleObstacle = {
             x: canvas.width,
             y: 0,
-            minY: canvas.height - 200,
+            minY: canvas.height - 350,
             maxY: canvas.height - 100,
             img: new Image(),
             width: 80,

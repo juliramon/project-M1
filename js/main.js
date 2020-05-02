@@ -1,19 +1,18 @@
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
 let requestId = undefined;
-let int1 = undefined;
+let interval = undefined;
 let int2 = undefined;
 
-let buttonPlay = document.querySelector('button');
-buttonPlay.addEventListener('click', startGame);
-
 function startGame() {
-    buttonPlay.innerHTML = 'Pause';
+    buttonPlay.removeEventListener('click', startGame);
+    buttonPlay.innerHTML = 'Pause game';
+    obstacles.frequency = 5000;
     obstacles.initialize();
-    int1 = setInterval(() => obstacles.initialize(), 5000);
     int2 = setInterval(() => health.initialize(), 3000);
     document.addEventListener('keydown', getKeyDown);
     document.addEventListener('keyup', getKeyUp);
+    intervals();
     updateCanvas();
 }
 
@@ -29,6 +28,9 @@ function getKeyUp(event) {
     if (event.code == 'ArrowUp') {
         character.gravity = 0.6;
     }
+    if (event.code == 'ArrowDown') {
+        character.img.src = './img/doctor.svg';
+    }
 }
 
 function updateCanvas() {
@@ -41,28 +43,34 @@ function updateCanvas() {
     health.show();
     background.frames++;
     showScore();
+    increaseDifficulty();
     requestId = requestAnimationFrame(updateCanvas);
     character.checkCrash();
     ctx.restore();
 }
 
+function intervals() {
+    interval = setInterval(
+        function () {
+            obstacles.initialize();
+        }, obstacles.frequency);
+}
+
 function gameOver() {
     cancelAnimationFrame(requestId);
     buttonPlay.removeEventListener('click', startGame);
-    buttonPlay.innerHTML = 'Try again';
+    buttonPlay.innerHTML = 'Start again'
     buttonPlay.addEventListener('click', cleanGame);
 };
 
 function cleanGame() {
+    buttonPlay.removeEventListener('click', cleanGame);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    clearInterval(int1);
-    clearInterval(int2);
-    obstacles.obstacles = [];
     health.item = [];
     character.lives = 0;
     background.frames = 0;
-    buttonPlay.removeEventListener('click', cleanGame);
-    buttonPlay.innerHTML = 'Pause';
-    buttonPlay.addEventListener('click', startGame);
+    obstacles.obstacles = [];
+    obstacles.frequency = 0;
+    clearInterval(interval);
     startGame();
 }

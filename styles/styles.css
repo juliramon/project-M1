@@ -1,8 +1,22 @@
+:root {
+    --main-font: Arial, Helvetica, sans-serif;
+    --main-color: #82368C;
+    --secondary-color: #d60b52;
+}
+
+
 body {
     overflow: hidden;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--main-font);
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+    outline: none;
 }
 
 main {
@@ -33,24 +47,37 @@ main {
     align-items: center;
 }
 
+.input-wrapper {
+    margin-top: 45px;
+}
+
+.input-wrapper input {
+    padding: 18px 30px;
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    font-size: 22px;
+    margin-right: 12px;
+    color: var(--secondary-color);
+    width: 380px;
+    font-weight: bold;
+}
+
 button#play {
-    background-color: #82368C;
+    background-color: var(--main-color);
     border-radius: 10px;
     border: none;
     font-size: 22px;
     color: #ffffff;
     padding: 20px 30px;
-    margin-top: 30px;
 }
 
 main p {
-    font-size: 12px;
-    color: #333;
+    font-size: small;
     position: absolute;
     bottom: 0;
 }
 
 main p a {
     text-decoration: none;
-    color: #82368C;
+    color: var(--main-color);
 }

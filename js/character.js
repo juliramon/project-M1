@@ -9,9 +9,16 @@ let character = {
     gravity: 0,
     gravitySpeed: 0,
     lives: 0,
+    timer: 300,
+    transition: 0,
     show: function () {
-        this.img.src = './img/doctor.svg';
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        if (this.y === 430) {
+            this.img.src = './img/walkingdoc.svg'
+            ctx.drawImage(this.img, 0, 0, 321, 328, this.x, this.y, 150, 150);
+        } else {
+            this.img.src = './img/doctor.svg';
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        }
     },
     newPos: function () {
         this.gravitySpeed += this.gravity;
