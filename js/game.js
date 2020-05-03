@@ -20,8 +20,7 @@ function showPauseButton() {
     buttonPause.addEventListener('click', pauseGame);
 }
 
-
-// Check document visibility
+// Pause / Stop Game - Check document visibility
 let hidden = '';
 let visibilityChange = '';
 if (typeof document.hidden !== 'undefined') {

@@ -2,7 +2,7 @@ let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 canvas.width = 900;
 canvas.height = 400;
-let requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump;
+let requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump, reward;
 
 function startGame() {
     bgLoop = new music('./audio/bg-loop.wav');
@@ -44,10 +44,12 @@ function updateCanvas() {
     obstacles.show();
     health.show();
     background.frames++;
+    counter--;
     showScore();
     increaseDifficulty();
     requestId = requestAnimationFrame(updateCanvas);
     character.checkCrash();
+    character.unlockUpgrade();
     ctx.restore();
 }
 
@@ -87,6 +89,7 @@ function pauseGame() {
     cancelAnimationFrame(requestId);
     clearInterval(intervalObs);
     clearInterval(intervalHealth);
+    bgLoop.stop();
     buttonPause.removeEventListener('click', pauseGame);
     buttonPause.innerHTML = 'Resume game';
     buttonPause.addEventListener('click', updateCanvas);

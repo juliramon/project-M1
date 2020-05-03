@@ -17,8 +17,13 @@ let character = {
         }
     },
     show: function () {
-        this.img.src = './img/doctor.svg';
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        if (character.lives > 64) { // 13 * 5 - 1
+            this.img.src = './img/doctor-mask.png';
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        } else if (character.lives <= 64) {
+            this.img.src = './img/doctor.png';
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        }
     },
     newPos: function () {
         this.gravitySpeed += this.gravity;
@@ -41,10 +46,10 @@ let character = {
         }
     },
     crash: function (item) {
-        let left = this.x;
+        let left = this.x + 10;
         let right = this.x + (this.width);
         let top = this.y;
-        let bottom = this.y + (this.height) - 50;
+        let bottom = this.y + (this.height) - 20;
         let obsLeft = item.x;
         let obsRight = item.x + (item.width);
         let obsTop = item.y;
@@ -56,7 +61,16 @@ let character = {
         return true;
     },
     checkCrash: function () {
-        obstacles.obstacles.forEach(obs => character.crash(obs) ? stopGame() : null);
+        obstacles.obstacles.forEach(obs => {
+            if (character.crash(obs)) {
+                if (character.lives < 64) {
+                    stopGame();
+                }
+                if (character.lives > 64) {
+                    obs.y -= 10;
+                }
+            };
+        });
         health.item.forEach(item => {
             if (character.crash(item)) {
                 character.lives++;
@@ -67,5 +81,18 @@ let character = {
                 }
             }
         });
+    },
+    unlockUpgrade: function () {
+        if (this.lives > 64) {
+            clearInterval(intervalHealth);
+            console.log('interval health anulat');
+            intervalHealth = setInterval(
+                function () {
+                    health.initialize();
+                }, health.frequency)
+            setTimeout(intervalHealth, 5000);
+            let resetLives = () => this.lives = 0;
+            setTimeout(resetLives, 5000);
+        }
     }
-}
+};
