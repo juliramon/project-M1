@@ -2,9 +2,11 @@ let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 canvas.width = 900;
 canvas.height = 400;
-let requestId, intervalObs, intervalHealth;
+let requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump;
 
 function startGame() {
+    bgLoop = new music('./audio/bg-loop.wav');
+    bgLoop.play();
     buttonPlay.removeEventListener('click', startGame);
     buttonPlay.innerHTML = 'Pause game';
     buttonPlay.addEventListener('click', pauseGame);
@@ -19,6 +21,8 @@ function startGame() {
 function getKeyDown(event) {
     if (event.code == 'ArrowUp' && character.y >= 240) {
         character.gravity = -2.2;
+        jump = new music('./audio/jump.wav');
+        jump.play();
     } else if (event.code == 'ArrowUp' && character.y !== 240) {
         getKeyUp(event);
     }
@@ -60,6 +64,9 @@ function intervals() {
 
 function stopGame() {
     cancelAnimationFrame(requestId);
+    bgLoop.stop();
+    gameOver = new music('./audio/game-over.wav');
+    gameOver.play();
     buttonPause.innerHTML = 'Play again';
     buttonPause.addEventListener('click', cleanGame);
 };
@@ -78,8 +85,27 @@ function cleanGame() {
 
 function pauseGame() {
     cancelAnimationFrame(requestId);
-    clearInterval(interval);
+    clearInterval(intervalObs);
+    clearInterval(intervalHealth);
     buttonPause.removeEventListener('click', pauseGame);
     buttonPause.innerHTML = 'Resume game';
     buttonPause.addEventListener('click', updateCanvas);
+}
+
+function music(src) {
+    this.music = document.createElement('audio');
+    this.music.src = src;
+    this.music.setAttribute('preload', 'auto');
+    this.music.setAttribute('controls', 'none');
+    if (src === './audio/bg-loop.wav') {
+        this.music.setAttribute('loop', 'loop');
+    }
+    this.music.style.display = 'none';
+    document.body.appendChild(this.music);
+    this.play = function () {
+        this.music.play();
+    }
+    this.stop = function () {
+        this.music.pause();
+    }
 }

@@ -60,6 +60,8 @@ let character = {
         health.item.forEach(item => {
             if (character.crash(item)) {
                 character.lives++;
+                reward = new music('./audio/reward.wav');
+                reward.play();
                 if (character.x > item.x) {
                     item.y -= 800;
                 }
