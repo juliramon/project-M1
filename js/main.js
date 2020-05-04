@@ -1,15 +1,32 @@
-let canvas = document.querySelector('#canvas');
-let ctx = canvas.getContext('2d');
+let canvas, ctx, requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump, reward, randomChar;
+canvas = document.querySelector('#canvas');
+ctx = canvas.getContext('2d');
+let counter = 580;
 canvas.width = 900;
 canvas.height = 400;
-let requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump, reward;
+bgLoop = new music('./audio/bg-loop.wav');
+jump = new music('./audio/jump.wav');
+gameOver = new music('./audio/game-over.wav');
+reward = new music('./audio/reward.wav');
 
 function startGame() {
-    bgLoop = new music('./audio/bg-loop.wav');
     bgLoop.play();
-    buttonPlay.removeEventListener('click', startGame);
-    buttonPlay.innerHTML = 'Pause game';
-    buttonPlay.addEventListener('click', pauseGame);
+    let canvasWrapper = document.querySelector('.canvas-wrapper');
+    let inputWrapper = document.querySelector('.input-wrapper');
+    canvasWrapper.removeChild(inputWrapper);
+    showPauseButton();
+    obstacles.frequency = 4000;
+    health.frequency = 7000;
+    document.addEventListener('keydown', getKeyDown);
+    document.addEventListener('keyup', getKeyUp);
+    pickCharacter();
+    intervals();
+    updateCanvas();
+}
+
+function repeatGame() {
+    bgLoop.play();
+    showPauseButton();
     obstacles.frequency = 4000;
     health.frequency = 7000;
     document.addEventListener('keydown', getKeyDown);
@@ -21,7 +38,6 @@ function startGame() {
 function getKeyDown(event) {
     if (event.code == 'ArrowUp' && character.y >= 240) {
         character.gravity = -2.2;
-        jump = new music('./audio/jump.wav');
         jump.play();
     } else if (event.code == 'ArrowUp' && character.y !== 240) {
         getKeyUp(event);
@@ -44,7 +60,7 @@ function updateCanvas() {
     obstacles.show();
     health.show();
     background.frames++;
-    counter--;
+    character.lives > 12 ? counter-- : null;
     showScore();
     increaseDifficulty();
     requestId = requestAnimationFrame(updateCanvas);
@@ -67,22 +83,39 @@ function intervals() {
 function stopGame() {
     cancelAnimationFrame(requestId);
     bgLoop.stop();
-    gameOver = new music('./audio/game-over.wav');
     gameOver.play();
-    buttonPause.innerHTML = 'Play again';
-    buttonPause.addEventListener('click', cleanGame);
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,.8';
+    ctx.fillRect(0, 0, 900, 400);
+    ctx.restore();
+    ctx.save();
+    ctx.font = '65px Nunito';
+    ctx.fillStyle = '#D60B52';
+    ctx.fillText('GAME OVER!', 250, 150);
+    ctx.restore();
+    let canvasWrapper = document.querySelector('.canvas-wrapper');
+    canvasWrapper.removeChild(buttonPause);
+    buttonRepeat = document.createElement('button');
+    buttonRepeat.setAttribute('id', 'repeat');
+    buttonRepeat.innerHTML = 'Try again';
+    canvasWrapper.appendChild(buttonRepeat);
+    buttonRepeat.addEventListener('click', cleanGame);
 };
 
 function cleanGame() {
+    let canvasWrapper = document.querySelector('.canvas-wrapper');
+    canvasWrapper.removeChild(buttonRepeat);
     buttonPlay.removeEventListener('click', cleanGame);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     health.item = [];
     character.lives = 0;
+    character.x = 0;
     background.frames = 0;
     obstacles.obstacles = [];
     obstacles.frequency = 0;
-    clearInterval(interval);
-    startGame();
+    clearInterval(intervalHealth);
+    clearInterval(intervalObs);
+    repeatGame();
 }
 
 function pauseGame() {
@@ -92,7 +125,20 @@ function pauseGame() {
     bgLoop.stop();
     buttonPause.removeEventListener('click', pauseGame);
     buttonPause.innerHTML = 'Resume game';
-    buttonPause.addEventListener('click', updateCanvas);
+    buttonPause.addEventListener('click', resumeGame);
+}
+
+function resumeGame() {
+    bgLoop.play();
+    obstacles.frequency = 4000;
+    health.frequency = 7000;
+    document.addEventListener('keydown', getKeyDown);
+    document.addEventListener('keyup', getKeyUp);
+    buttonPause.removeEventListener('click', resumeGame);
+    buttonPause.innerHTML = 'Pause game';
+    buttonPause.addEventListener('click', pauseGame);
+    intervals();
+    updateCanvas();
 }
 
 function music(src) {

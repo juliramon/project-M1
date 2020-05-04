@@ -1,18 +1,15 @@
 let buttonPlay = document.querySelector('button');
 buttonPlay.addEventListener('click', getPlayerName);
-let buttonPause, playerName;
+let buttonPause, playerName, buttonRepeat, hidden, visibilityChange;
 
 function getPlayerName() {
     let inputValue = document.getElementById('username').value;
     playerName = inputValue || 'Anonymous Player';
     startGame();
-    showPauseButton();
 }
 
 function showPauseButton() {
-    let inputWrapper = document.querySelector('.input-wrapper');
     let canvasWrapper = document.querySelector('.canvas-wrapper');
-    canvasWrapper.removeChild(inputWrapper);
     buttonPause = document.createElement('button');
     buttonPause.setAttribute('id', 'pause');
     buttonPause.innerHTML = 'Pause game';
@@ -21,8 +18,6 @@ function showPauseButton() {
 }
 
 // Pause / Stop Game - Check document visibility
-let hidden = '';
-let visibilityChange = '';
 if (typeof document.hidden !== 'undefined') {
     hidden = 'hidden';
     visibilityChange = 'visibilitychange';
@@ -36,13 +31,7 @@ if (typeof document.hidden !== 'undefined') {
 
 function handleVisibilityChange() {
     if (document.hidden) {
-        console.log('game paused');
-        console.log('hidden: ' + document.hidden);
         pauseGame();
-    } else {
-        console.log('game resumed');
-        console.log('hidden: ' + document.hidden);
-        //updateCanvas();
     }
 }
 

@@ -11,17 +11,18 @@ let character = {
     lives: 0,
     timer: 300,
     transition: 0,
+    characters: ['./img/timer.png', './img/virus.png', './img/doctor.png'],
     walk: function () {
         if (this.x < 100) {
             this.x += 1;
         }
     },
     show: function () {
-        if (character.lives > 64) { // 13 * 5 - 1
+        if (character.lives > 12) { // 60
             this.img.src = './img/doctor-mask.png';
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-        } else if (character.lives <= 64) {
-            this.img.src = './img/doctor.png';
+        } else if (character.lives <= 12) {
+            this.img.src = randomChar;
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }
     },
@@ -63,10 +64,10 @@ let character = {
     checkCrash: function () {
         obstacles.obstacles.forEach(obs => {
             if (character.crash(obs)) {
-                if (character.lives < 64) {
+                if (character.lives < 12) {
                     stopGame();
                 }
-                if (character.lives > 64) {
+                if (character.lives > 12) {
                     obs.y -= 10;
                 }
             };
@@ -74,7 +75,6 @@ let character = {
         health.item.forEach(item => {
             if (character.crash(item)) {
                 character.lives++;
-                reward = new music('./audio/reward.wav');
                 reward.play();
                 if (character.x > item.x) {
                     item.y -= 800;
@@ -83,16 +83,26 @@ let character = {
         });
     },
     unlockUpgrade: function () {
-        if (this.lives > 64) {
+        if (this.lives > 12) {
+            bgLoop.music.playbackRate = 2;
+            setTimeout(() => {
+                bgLoop.music.playbackRate = 1;
+            }, 10000);
             clearInterval(intervalHealth);
-            console.log('interval health anulat');
             intervalHealth = setInterval(
                 function () {
                     health.initialize();
                 }, health.frequency)
-            setTimeout(intervalHealth, 5000);
+            setTimeout(intervalHealth, 10000);
             let resetLives = () => this.lives = 0;
-            setTimeout(resetLives, 5000);
+            setTimeout(resetLives, 10000);
         }
     }
+};
+
+
+function pickCharacter() {
+    let arr = ['./img/timer.png', './img/virus.png', './img/doctor.png'];
+    randomChar = arr[Math.floor(Math.random() * arr.length)];
+    return randomChar;
 };

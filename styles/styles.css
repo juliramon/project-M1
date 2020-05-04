@@ -84,7 +84,8 @@ button {
     color: #ffffff;
 }
 
-button#play {
+button#play,
+button#repeat {
     font-size: 22px;
     padding: 20px 30px;
 }
@@ -95,6 +96,13 @@ button#pause {
     position: absolute;
     right: 30px;
     top: 17px;
+}
+
+button#repeat {
+    position: absolute;
+    right: 40%;
+    top: 50%;
+    border: 3px solid #fff;
 }
 
 footer p {
