@@ -11,7 +11,7 @@ let character = {
     lives: 0,
     timer: 300,
     transition: 0,
-    characters: ['./img/firefighter.png', './img/police.png', './img/doctor.png'],
+    //characters: ['./img/firefighter.png', './img/police.png', './img/doctor.png'],
     walk: function () {
         if (this.x < 100) {
             this.x += 1;
@@ -22,7 +22,7 @@ let character = {
             this.img.src = './img/doctor-mask.png';
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         } else if (character.lives <= 12) {
-            this.img.src = randomChar;
+            this.img.src = './img/doctor.png';
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }
     },

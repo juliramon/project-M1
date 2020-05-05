@@ -19,7 +19,7 @@ function startGame() {
     health.frequency = 7000;
     document.addEventListener('keydown', getKeyDown);
     document.addEventListener('keyup', getKeyUp);
-    pickCharacter();
+    //pickCharacter();
     intervals();
     updateCanvas();
 }
@@ -27,7 +27,7 @@ function startGame() {
 function repeatGame() {
     bgLoop.play();
     showPauseButton();
-    pickCharacter();
+    //pickCharacter();
     obstacles.frequency = 4000;
     health.frequency = 7000;
     document.addEventListener('keydown', getKeyDown);
@@ -161,7 +161,7 @@ function music(src) {
     }
 }
 
-function pickCharacter() {
+/*function pickCharacter() {
     randomChar = character.characters[Math.floor(Math.random() * character.characters.length)];
     return randomChar;
-};
+};*/
