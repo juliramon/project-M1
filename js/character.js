@@ -18,10 +18,10 @@ let character = {
         }
     },
     show: function () {
-        if (character.lives > 12) { // 60
+        if (character.lives > 30) { // 60
             this.img.src = './img/doctor-mask.png';
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-        } else if (character.lives <= 12) {
+        } else if (character.lives <= 30) {
             this.img.src = './img/doctor.png';
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }
@@ -64,17 +64,17 @@ let character = {
     checkCrash: function () {
         obstacles.obstacles.forEach(obs => {
             if (character.crash(obs)) {
-                if (character.lives < 12) {
+                if (character.lives < 30) {
                     stopGame();
                 }
-                if (character.lives > 12) {
+                if (character.lives > 30) {
                     obs.y -= 10;
                 }
             };
         });
         health.item.forEach(item => {
             if (character.crash(item)) {
-                character.lives++;
+                console.log(character.lives++);
                 reward.play();
                 if (character.x > item.x) {
                     item.y -= 800;
@@ -83,19 +83,22 @@ let character = {
         });
     },
     unlockUpgrade: function () {
-        if (this.lives > 12) {
+        if (this.lives > 30) {
             bgLoop.music.playbackRate = 2;
             setTimeout(() => {
                 bgLoop.music.playbackRate = 1;
-                counter = 580;
-                this.lives = 0;
-            }, 10000);
+            }, 8000);
             clearInterval(intervalHealth);
+            console.log('interval health anulat');
             intervalHealth = setInterval(
                 function () {
                     health.initialize();
                 }, health.frequency)
-            setTimeout(intervalHealth, 10000);
+            setTimeout(intervalHealth, 8000);
+            let resetCounter = () => counter = 510;
+            setTimeout(resetCounter, 10000);
+            let resetLives = () => this.lives = 0;
+            setTimeout(resetLives, 8000);
         }
     }
 }

@@ -1,7 +1,7 @@
 let canvas, ctx, requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump, reward, randomChar;
 canvas = document.querySelector('#canvas');
 ctx = canvas.getContext('2d');
-let counter = 580;
+let counter = 510;
 canvas.width = 900;
 canvas.height = 400;
 bgLoop = new music('./audio/bg-loop.wav');
@@ -61,12 +61,12 @@ function updateCanvas() {
     obstacles.show();
     health.show();
     background.frames++;
-    character.lives > 12 ? counter-- : null;
+    character.lives > 30 ? counter-- : null;
     showScore();
     increaseDifficulty();
     requestId = requestAnimationFrame(updateCanvas);
     character.checkCrash();
-    character.unlockUpgrade();
+    character.lives > 30 ? character.unlockUpgrade() : null;
     ctx.restore();
 }
 
@@ -137,7 +137,6 @@ function cleanGame() {
     background.frames = 0;
     obstacles.obstacles = [];
     obstacles.frequency = 0;
-    counter = 580;
     clearInterval(intervalHealth);
     clearInterval(intervalObs);
     repeatGame();

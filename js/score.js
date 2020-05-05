@@ -8,12 +8,12 @@ function showScore() {
     let mask = new Image();
     mask.src = './img/face-mask-bar.png';
     ctx.drawImage(mask, 125, 17, 50, 34);
-    ctx.fillText(`${Math.ceil(character.lives / 13)} / 5`, 185, 40);
+    ctx.fillText(`${Math.ceil(character.lives / 13)} / 3`, 185, 40);
     let docFace = new Image();
     docFace.src = './img/doc-face.png';
     ctx.drawImage(docFace, 250, 17, 50, 33);
     ctx.fillText(`${playerName}`, 300, 40);
-    if (character.lives > 12) {
+    if (character.lives > 30) {
         let mask = new Image();
         mask.src = './img/timer.png';
         ctx.drawImage(mask, 605, 15, 40, 41);
