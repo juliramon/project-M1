@@ -27,6 +27,7 @@ function startGame() {
 function repeatGame() {
     bgLoop.play();
     showPauseButton();
+    pickCharacter();
     obstacles.frequency = 4000;
     health.frequency = 7000;
     document.addEventListener('keydown', getKeyDown);
@@ -80,44 +81,6 @@ function intervals() {
         }, health.frequency);
 }
 
-function stopGame() {
-    cancelAnimationFrame(requestId);
-    bgLoop.stop();
-    gameOver.play();
-    ctx.save();
-    ctx.fillStyle = 'rgba(0,0,0,.8';
-    ctx.fillRect(0, 0, 900, 400);
-    ctx.restore();
-    ctx.save();
-    ctx.font = '65px Nunito';
-    ctx.fillStyle = '#D60B52';
-    ctx.fillText('GAME OVER!', 250, 150);
-    ctx.restore();
-    let canvasWrapper = document.querySelector('.canvas-wrapper');
-    canvasWrapper.removeChild(buttonPause);
-    buttonRepeat = document.createElement('button');
-    buttonRepeat.setAttribute('id', 'repeat');
-    buttonRepeat.innerHTML = 'Try again';
-    canvasWrapper.appendChild(buttonRepeat);
-    buttonRepeat.addEventListener('click', cleanGame);
-};
-
-function cleanGame() {
-    let canvasWrapper = document.querySelector('.canvas-wrapper');
-    canvasWrapper.removeChild(buttonRepeat);
-    buttonPlay.removeEventListener('click', cleanGame);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    health.item = [];
-    character.lives = 0;
-    character.x = 0;
-    background.frames = 0;
-    obstacles.obstacles = [];
-    obstacles.frequency = 0;
-    clearInterval(intervalHealth);
-    clearInterval(intervalObs);
-    repeatGame();
-}
-
 function pauseGame() {
     cancelAnimationFrame(requestId);
     clearInterval(intervalObs);
@@ -141,6 +104,45 @@ function resumeGame() {
     updateCanvas();
 }
 
+function stopGame() {
+    cancelAnimationFrame(requestId);
+    bgLoop.stop();
+    gameOver.play();
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,.8';
+    ctx.fillRect(0, 0, 900, 400);
+    ctx.restore();
+    ctx.save();
+    ctx.font = '65px Nunito';
+    ctx.fillStyle = '#D60B52';
+    ctx.fillText('GAME OVER!', 250, 150);
+    ctx.restore();
+    let canvasWrapper = document.querySelector('.canvas-wrapper');
+    canvasWrapper.removeChild(buttonPause);
+    buttonRepeat = document.createElement('button');
+    buttonRepeat.setAttribute('id', 'repeat');
+    buttonRepeat.innerHTML = 'Try again';
+    canvasWrapper.appendChild(buttonRepeat);
+    buttonRepeat.addEventListener('click', cleanGame);
+}
+
+function cleanGame() {
+    let canvasWrapper = document.querySelector('.canvas-wrapper');
+    canvasWrapper.removeChild(buttonRepeat);
+    buttonPlay.removeEventListener('click', cleanGame);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    health.item = [];
+    character.lives = 0;
+    character.x = 0;
+    background.frames = 0;
+    obstacles.obstacles = [];
+    obstacles.frequency = 0;
+    counter = 580;
+    clearInterval(intervalHealth);
+    clearInterval(intervalObs);
+    repeatGame();
+}
+
 function music(src) {
     this.music = document.createElement('audio');
     this.music.src = src;
@@ -158,3 +160,8 @@ function music(src) {
         this.music.pause();
     }
 }
+
+function pickCharacter() {
+    randomChar = character.characters[Math.floor(Math.random() * character.characters.length)];
+    return randomChar;
+};

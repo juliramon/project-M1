@@ -11,7 +11,7 @@ let character = {
     lives: 0,
     timer: 300,
     transition: 0,
-    characters: ['./img/timer.png', './img/virus.png', './img/doctor.png'],
+    characters: ['./img/firefighter.png', './img/police.png', './img/doctor.png'],
     walk: function () {
         if (this.x < 100) {
             this.x += 1;
@@ -98,11 +98,4 @@ let character = {
             setTimeout(resetLives, 10000);
         }
     }
-};
-
-
-function pickCharacter() {
-    let arr = ['./img/timer.png', './img/virus.png', './img/doctor.png'];
-    randomChar = arr[Math.floor(Math.random() * arr.length)];
-    return randomChar;
-};
+}
