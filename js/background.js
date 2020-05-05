@@ -14,8 +14,6 @@ let background = {
         ctx.drawImage(this.img, this.x, 0);
         ctx.drawImage(this.img, this.x - this.img.width + 1, 0);
         this.x += this.speed;
-        if (this.x <= 0) {
-            this.x = canvas.width;
-        }
+        this.x <= 0 ? this.x = canvas.width : null;
     }
 };

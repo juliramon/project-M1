@@ -9,19 +9,17 @@ let character = {
     gravity: 0,
     gravitySpeed: 0,
     lives: 0,
-    timer: 300,
+    timer: 280,
     transition: 0,
     //characters: ['./img/firefighter.png', './img/police.png', './img/doctor.png'],
     walk: function () {
-        if (this.x < 100) {
-            this.x += 1;
-        }
+        this.x < 100 ? this.x += 1 : null;
     },
     show: function () {
-        if (character.lives > 30) { // 60
+        if (character.lives > 28) { // 60
             this.img.src = './img/doctor-mask.png';
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-        } else if (character.lives <= 30) {
+        } else if (character.lives <= 28) {
             this.img.src = './img/doctor.png';
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }
@@ -64,41 +62,32 @@ let character = {
     checkCrash: function () {
         obstacles.obstacles.forEach(obs => {
             if (character.crash(obs)) {
-                if (character.lives < 30) {
-                    stopGame();
-                }
-                if (character.lives > 30) {
-                    obs.y -= 10;
-                }
+                character.lives < 28 ? stopGame() : null;
+                character.lives > 28 ? obs.y -= 10 : null;
             };
         });
         health.item.forEach(item => {
             if (character.crash(item)) {
-                console.log(character.lives++);
+                character.lives++;
                 reward.play();
-                if (character.x > item.x) {
-                    item.y -= 800;
-                }
+                character.x > item.x ? item.y -= 800 : null;
             }
         });
     },
     unlockUpgrade: function () {
-        if (this.lives > 30) {
-            bgLoop.music.playbackRate = 2;
-            setTimeout(() => {
-                bgLoop.music.playbackRate = 1;
-            }, 8000);
-            clearInterval(intervalHealth);
-            console.log('interval health anulat');
-            intervalHealth = setInterval(
-                function () {
-                    health.initialize();
-                }, health.frequency)
-            setTimeout(intervalHealth, 8000);
-            let resetCounter = () => counter = 510;
-            setTimeout(resetCounter, 10000);
-            let resetLives = () => this.lives = 0;
-            setTimeout(resetLives, 8000);
-        }
+        background.speed = -5;
+        bgLoop.music.playbackRate = 2;
+        setTimeout(() => {
+            bgLoop.music.playbackRate = 1;
+            background.speed = -2;
+            this.lives = 0;
+            counter = 510;
+        }, 8000);
+        clearInterval(intervalHealth);
+        intervalHealth = setInterval(
+            function () {
+                health.initialize();
+            }, health.frequency)
+        setTimeout(intervalHealth, 8000);
     }
 }

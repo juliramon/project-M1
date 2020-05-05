@@ -76,6 +76,31 @@ main {
     font-weight: bold;
 }
 
+#instructions {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px 0;
+}
+
+#instructions .left,
+#instructions .right {
+    display: flex;
+    align-items: center;
+    color: #757575;
+    font-size: 13px;
+}
+
+#instructions img {
+    width: 25px;
+    margin-right: 12px;
+}
+
 button {
     background-color: var(--main-color);
     border-radius: 10px;

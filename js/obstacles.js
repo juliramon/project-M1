@@ -19,7 +19,7 @@ let obstacles = {
         this.obstacles.forEach(obs => {
             ctx.save();
             obs.x -= this.speedX;
-            obs.img.src = './img/covid19.svg';
+            obs.img.src = './img/covid19.png';
             ctx.drawImage(obs.img, obs.x, obs.y, obs.width, obs.height);
             ctx.restore();
         });
