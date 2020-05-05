@@ -87,6 +87,8 @@ let character = {
             bgLoop.music.playbackRate = 2;
             setTimeout(() => {
                 bgLoop.music.playbackRate = 1;
+                counter = 580;
+                this.lives = 0;
             }, 10000);
             clearInterval(intervalHealth);
             intervalHealth = setInterval(
@@ -94,10 +96,6 @@ let character = {
                     health.initialize();
                 }, health.frequency)
             setTimeout(intervalHealth, 10000);
-            let resetLives = () => this.lives = 0;
-            setTimeout(resetLives, 10000);
-            let resetCounter = () => counter = 580;
-            setTimeout(resetCounter, 10000);
         }
     }
 }
