@@ -30,6 +30,9 @@ body {
     font-family: var(--main-font);
     background-image: var(--bg-game-blur);
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 #particles-js {
