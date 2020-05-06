@@ -53,7 +53,6 @@ function updateCanvas() {
     requestId = requestAnimationFrame(updateCanvas);
     character.checkCrash();
     character.lives > 28 ? character.unlockUpgrade() : null;
-    getHighestScore();
     ctx.restore();
 };
 
@@ -106,6 +105,7 @@ function resumeGame() {
 
 function stopGame() {
     cancelAnimationFrame(requestId);
+    getHighestScore();
     bgLoop.stop();
     gameOver.play();
     ctx.save();
@@ -120,7 +120,7 @@ function stopGame() {
     ctx.save();
     ctx.font = '30px Nunito';
     ctx.fillStyle = 'white';
-    ctx.fillText(`Score: ${Math.floor(background.frames / 5)} I Highest score: ${localStorage.getItem('highestScore')}`, 242, 180);
+    ctx.fillText(`Score: ${Math.floor(background.frames / 5)} I Highest score: ${localStorage.highestScore}`, 244, 180);
     ctx.restore();
     let canvasWrapper = document.querySelector('.canvas-wrapper');
     canvasWrapper.removeChild(buttonPause);

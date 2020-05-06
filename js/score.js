@@ -23,16 +23,11 @@ function showScore() {
 };
 
 function getHighestScore() {
-    let changingScore = Math.floor(background.frames / 5);
-    localStorage.setItem('changingScore', changingScore);
+    let score = Math.floor(background.frames / 5);
+    highestScore = localStorage.highestScore ? localStorage.highestScore : 0;
 
-    if (localStorage.getItem('highestScore') === null) {
-        highestScore = 0;
-    }
-
-    if (changingScore > highestScore) {
-        highestScore = changingScore;
-        localStorage.setItem('highestScore', highestScore);
+    if (score > highestScore) {
+        highestScore = localStorage.highestScore = score;
     }
 
     return highestScore;
