@@ -21,6 +21,10 @@ button:focus {
     outline: none;
 }
 
+::placeholder {
+    font-family: var(--main-font);
+}
+
 body {
     overflow: hidden;
     margin: 0;
