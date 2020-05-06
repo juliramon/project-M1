@@ -83,7 +83,7 @@ main {
     color: var(--secondary-color);
     width: 380px;
     font-weight: bold;
-    font-family: -apple-system;
+    font-family: var(--main-font);
 }
 
 #instructions {
