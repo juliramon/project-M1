@@ -1,5 +1,5 @@
-let requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump, reward, randomChar;
-let counter = 510;
+let requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump, reward, highestScore, counter;
+counter = 510;
 bgLoop = new Music('./audio/bg-loop.wav');
 jump = new Music('./audio/jump.wav');
 gameOver = new Music('./audio/game-over.wav');
@@ -13,10 +13,9 @@ function startGame() {
     health.frequency = 7000;
     document.addEventListener('keydown', getKeyDown);
     document.addEventListener('keyup', getKeyUp);
-    //pickCharacter();
     intervals();
     updateCanvas();
-}
+};
 
 function getKeyDown(event) {
     if (event.code == 'ArrowUp' && character.y >= 240) {
@@ -30,13 +29,13 @@ function getKeyDown(event) {
     } else if (event.code == 'Space' && checkPause) {
         resumeGame();
     }
-}
+};
 
 function getKeyUp(event) {
     if (event.code == 'ArrowUp') {
         character.gravity = 0.6;
     }
-}
+};
 
 function updateCanvas() {
     ctx.save();
@@ -54,8 +53,9 @@ function updateCanvas() {
     requestId = requestAnimationFrame(updateCanvas);
     character.checkCrash();
     character.lives > 28 ? character.unlockUpgrade() : null;
+    getHighestScore();
     ctx.restore();
-}
+};
 
 function intervals() {
     intervalObs = setInterval(
@@ -66,19 +66,18 @@ function intervals() {
         function () {
             health.initialize();
         }, health.frequency);
-}
+};
 
 function repeatGame() {
     bgLoop.play();
     showPauseButton();
-    //pickCharacter();
     obstacles.frequency = 4000;
     health.frequency = 7000;
     document.addEventListener('keydown', getKeyDown);
     document.addEventListener('keyup', getKeyUp);
     intervals();
     updateCanvas();
-}
+};
 
 function pauseGame() {
     cancelAnimationFrame(requestId);
@@ -89,7 +88,7 @@ function pauseGame() {
     buttonPause.innerHTML = 'Resume game';
     buttonPause.addEventListener('click', resumeGame);
     checkPause = true;
-}
+};
 
 function resumeGame() {
     bgLoop.play();
@@ -103,7 +102,7 @@ function resumeGame() {
     intervals();
     updateCanvas();
     checkPause = false;
-}
+};
 
 function stopGame() {
     cancelAnimationFrame(requestId);
@@ -116,7 +115,12 @@ function stopGame() {
     ctx.save();
     ctx.font = '65px Nunito';
     ctx.fillStyle = '#D60B52';
-    ctx.fillText('GAME OVER!', 250, 150);
+    ctx.fillText('GAME OVER!', 250, 130);
+    ctx.restore();
+    ctx.save();
+    ctx.font = '30px Nunito';
+    ctx.fillStyle = 'white';
+    ctx.fillText(`Score: ${Math.floor(background.frames / 5)} I Highest score: ${localStorage.getItem('highestScore')}`, 242, 180);
     ctx.restore();
     let canvasWrapper = document.querySelector('.canvas-wrapper');
     canvasWrapper.removeChild(buttonPause);
@@ -125,7 +129,7 @@ function stopGame() {
     buttonRepeat.innerHTML = 'Try again';
     canvasWrapper.appendChild(buttonRepeat);
     buttonRepeat.addEventListener('click', cleanGame);
-}
+};
 
 function cleanGame() {
     let canvasWrapper = document.querySelector('.canvas-wrapper');
@@ -141,7 +145,7 @@ function cleanGame() {
     clearInterval(intervalHealth);
     clearInterval(intervalObs);
     repeatGame();
-}
+};
 
 function Music(src) {
     this.music = document.createElement('audio');
@@ -157,9 +161,4 @@ function Music(src) {
     this.stop = function () {
         this.music.pause();
     }
-}
-
-/*function pickCharacter() {
-    randomChar = character.characters[Math.floor(Math.random() * character.characters.length)];
-    return randomChar;
-};*/
+};

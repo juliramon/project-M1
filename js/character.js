@@ -11,12 +11,11 @@ let character = {
     lives: 0,
     timer: 280,
     transition: 0,
-    //characters: ['./img/firefighter.png', './img/police.png', './img/doctor.png'],
     walk: function () {
         this.x < 100 ? this.x += 1 : null;
     },
     show: function () {
-        if (character.lives > 28) { // 60
+        if (character.lives > 28) {
             this.img.src = './img/doctor-mask.png';
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         } else if (character.lives <= 28) {
