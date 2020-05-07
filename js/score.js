@@ -11,7 +11,7 @@ function showScore() {
     ctx.drawImage(images.docFace, 250, 17, 40, 29);
     ctx.fillText(localStorage.getItem('playerName'), 300, 40);
     if (character.lives > 28) {
-        images.timer.src = './img/timer-bar.png';
+        timer.src = './img/timer-bar.png';
         ctx.drawImage(images.timer, 605, 18, 30, 31);
         ctx.font = '55px Nunito';
         ctx.fillText(Math.round(counter / 60), 650, 55);
@@ -36,6 +36,7 @@ function increaseDifficulty() {
     ];
     checkPoints[0].forEach(cp => {
         if (background.frames / 5 === cp) {
+            console.log('cp L1');
             obstacles.frequency -= 1000;
             clearInterval(intervalObs);
             intervalObs = setInterval(
@@ -46,6 +47,7 @@ function increaseDifficulty() {
     });
     checkPoints[1].forEach(cp => {
         if (background.frames / 5 === cp) {
+            console.log('cp L2');
             obstacles.frequency -= Math.floor(Math.random() * (1000 - 100 + 1) + 100);
             clearInterval(intervalObs);
             intervalObs = setInterval(
