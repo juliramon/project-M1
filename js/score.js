@@ -11,7 +11,7 @@ function showScore() {
     ctx.drawImage(images.docFace, 250, 17, 40, 29);
     ctx.fillText(localStorage.getItem('playerName'), 300, 40);
     if (character.lives > 28) {
-        timer.src = './img/timer-bar.png';
+        images.timer.src = './img/timer-bar.png';
         ctx.drawImage(images.timer, 605, 18, 30, 31);
         ctx.font = '55px Nunito';
         ctx.fillText(Math.round(counter / 60), 650, 55);
