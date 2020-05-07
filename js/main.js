@@ -5,6 +5,13 @@ jump = new Music('./audio/jump.wav');
 gameOver = new Music('./audio/game-over.wav');
 reward = new Music('./audio/reward.wav');
 
+let images = {
+    flag: new Image(),
+    mask: new Image(),
+    docFace: new Image(),
+    timer: new Image()
+}
+
 function startGame() {
     bgLoop.play();
     canvasWrapper.removeChild(inputWrapper);
