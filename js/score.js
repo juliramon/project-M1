@@ -36,7 +36,6 @@ function increaseDifficulty() {
     ];
     checkPoints[0].forEach(cp => {
         if (background.frames / 5 === cp) {
-            console.log('cp L1');
             obstacles.frequency -= 1000;
             clearInterval(intervalObs);
             intervalObs = setInterval(
@@ -47,7 +46,6 @@ function increaseDifficulty() {
     });
     checkPoints[1].forEach(cp => {
         if (background.frames / 5 === cp) {
-            console.log('cp L2');
             obstacles.frequency -= Math.floor(Math.random() * (1000 - 100 + 1) + 100);
             clearInterval(intervalObs);
             intervalObs = setInterval(

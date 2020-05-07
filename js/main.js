@@ -9,8 +9,8 @@ let images = {
     flag: new Image(),
     mask: new Image(),
     docFace: new Image(),
-    timer: new Image()
-}
+    timer: new Image(),
+};
 
 function startGame() {
     bgLoop.play();
