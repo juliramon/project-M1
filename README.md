@@ -52,6 +52,7 @@ Jira: https://juli-ironhack.atlassian.net/secure/RapidBoard.jspa?projectKey=PM&r
 Repositorio: https://github.com/juliramon/project-M1
 
 ### Slides
+Google Slides: https://docs.google.com/presentation/d/139Go9D6686qZHePz2uqd5YunGGkGKGmuTZTPTbhwg7o/edit?usp=sharing
 
 ---
 
