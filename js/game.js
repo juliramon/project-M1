@@ -21,7 +21,7 @@ function getPlayerName() {
 function showPauseButton() {
     buttonPause = document.createElement('button');
     buttonPause.setAttribute('id', 'pause');
-    buttonPause.innerHTML = 'Pause game';
+    buttonPause.innerHTML = `<img src='./img/pause-icon.svg' id='pause'> Pause game`;
     canvasWrapper.appendChild(buttonPause);
     buttonPause.addEventListener('click', pauseGame);
 };

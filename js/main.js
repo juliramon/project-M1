@@ -1,26 +1,11 @@
-let requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump, reward, highestScore, counter;
+let requestId, intervalObs, intervalHealth, bgLoop, gameOver, jump, reward, highestScore, counter, sprite;
 counter = 510;
 bgLoop = new Music('./audio/bg-loop.wav');
 jump = new Music('./audio/jump.wav');
 gameOver = new Music('./audio/game-over.wav');
 reward = new Music('./audio/reward.wav');
-
-let flag = new Image();
-flag.src = './img/flag-points-bar.png';
-let maskBar = new Image();
-maskBar.src = './img/face-mask-bar.png';
-let docFace = new Image();
-docFace.src = './img/doc-face-bar.png';
-let timer = new Image();
-timer.src = './img/timer-bar.png';
-let char = new Image();
-char.src = './img/doctor.png';
-let charMask = new Image();
-charMask.src = './img/doctor-mask.png';
-let obstacle = new Image();
-obstacle.src = './img/covid19.png';
-let mask = new Image();
-mask.src = './img/face-mask.png';
+sprite = new Image();
+sprite.src = './img/sprite.png';
 
 function startGame() {
     bgLoop.play();
@@ -101,7 +86,7 @@ function pauseGame() {
     clearInterval(intervalHealth);
     bgLoop.stop();
     buttonPause.removeEventListener('click', pauseGame);
-    buttonPause.innerHTML = 'Resume game';
+    buttonPause.innerHTML = `<img src='./img/resume-icon.svg' id='resume'> Resume game`;
     buttonPause.addEventListener('click', resumeGame);
     checkPause = true;
 };
@@ -113,7 +98,7 @@ function resumeGame() {
     document.addEventListener('keydown', getKeyDown);
     document.addEventListener('keyup', getKeyUp);
     buttonPause.removeEventListener('click', resumeGame);
-    buttonPause.innerHTML = 'Pause game';
+    buttonPause.innerHTML = `<img src='./img/pause-icon.svg' id='pause'> Pause game`;
     buttonPause.addEventListener('click', pauseGame);
     intervals();
     updateCanvas();
@@ -143,7 +128,7 @@ function stopGame() {
     canvasWrapper.removeChild(buttonPause);
     buttonRepeat = document.createElement('button');
     buttonRepeat.setAttribute('id', 'repeat');
-    buttonRepeat.innerHTML = 'Try again';
+    buttonRepeat.innerHTML = `<img src='./img/retry-icon.svg' id='retry'> Try again`;
     canvasWrapper.appendChild(buttonRepeat);
     buttonRepeat.addEventListener('click', cleanGame);
 };

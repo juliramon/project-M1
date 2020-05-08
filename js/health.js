@@ -15,7 +15,7 @@ let health = {
         this.item.forEach(obs => {
             ctx.save();
             obs.x -= this.speedX;
-            ctx.drawImage(mask, obs.x, obs.y, obs.width, obs.height);
+            ctx.drawImage(sprite, 718, 319, 100, 68.69, obs.x, obs.y, obs.width, obs.height);
             ctx.restore();
         });
     }

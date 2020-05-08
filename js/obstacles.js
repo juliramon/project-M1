@@ -18,7 +18,7 @@ let obstacles = {
         this.obstacles.forEach(obs => {
             ctx.save();
             obs.x -= this.speedX;
-            ctx.drawImage(obstacle, obs.x, obs.y, obs.width, obs.height);
+            ctx.drawImage(sprite, 638, 309, 80, 78.4, obs.x, obs.y, obs.width, obs.height);
             ctx.restore();
         });
     }

@@ -15,9 +15,9 @@ let character = {
     },
     show: function () {
         if (character.lives > 28) {
-            ctx.drawImage(charMask, this.x, this.y, this.width, this.height);
+            ctx.drawImage(sprite, 0, 0, 319, 388, this.x, this.y, this.width, this.height);
         } else if (character.lives <= 28) {
-            ctx.drawImage(char, this.x, this.y, this.width, this.height);
+            ctx.drawImage(sprite, 319, 0, 319, 388, this.x, this.y, this.width, this.height);
         }
     },
     newPos: function () {

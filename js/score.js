@@ -1,15 +1,15 @@
 function showScore() {
     ctx.font = '18px Nunito';
     ctx.fillStyle = '#82368c';
-    ctx.drawImage(flag, 30, 17, 30, 34);
+    ctx.drawImage(sprite, 638, 275, 30, 33.78, 30, 17, 30, 34);
     ctx.fillText(Math.floor(background.frames / 5), 70, 40);
-    ctx.drawImage(maskBar, 130, 17, 40, 29);
+    ctx.drawImage(sprite, 708, 277, 40, 29, 130, 17, 40, 29);
     ctx.fillText(`${Math.ceil(character.lives / 13)} / 3`, 185, 40);
-    ctx.drawImage(docFace, 250, 17, 40, 29);
+    ctx.drawImage(sprite, 668, 277, 40.48, 28.99, 250, 17, 40, 29);
     ctx.fillText(localStorage.getItem('playerName'), 300, 40);
     if (character.lives > 28) {
         ctx.font = '55px Nunito';
-        ctx.drawImage(timer, 605, 18, 30, 31);
+        ctx.drawImage(sprite, 748, 276, 29.82, 31, 605, 18, 30, 31);
         ctx.fillText(Math.round(counter / 60), 650, 55);
     }
 };
