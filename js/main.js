@@ -5,27 +5,22 @@ jump = new Music('./audio/jump.wav');
 gameOver = new Music('./audio/game-over.wav');
 reward = new Music('./audio/reward.wav');
 
-document.addEventListener('load', showImages);
-
-let images = {
-    flag: new Image(),
-    mask: new Image(),
-    docFace: new Image(),
-    timer: new Image(),
-};
-
-function showImages(){
-    images.flag.src = './img/flag-points-bar.png';
-    ctx.drawImage(images.flag, 30, 17, 30, 34);
-    images.mask.src = './img/face-mask-bar.png';
-    ctx.drawImage(images.mask, 130, 17, 40, 29);
-    images.docFace.src = './img/doc-face-bar.png';
-    ctx.drawImage(images.docFace, 250, 17, 40, 29);
-    if(character.lives > 28){
-        images.timer.src = './img/timer-bar.png';
-        ctx.drawImage(images.timer, 605, 18, 30, 31);
-    }
-}
+let flag = new Image();
+flag.src = './img/flag-points-bar.png';
+let maskBar = new Image();
+maskBar.src = './img/face-mask-bar.png';
+let docFace = new Image();
+docFace.src = './img/doc-face-bar.png';
+let timer = new Image();
+timer.src = './img/timer-bar.png';
+let char = new Image();
+char.src = './img/doctor.png';
+let charMask = new Image();
+charMask.src = './img/doctor-mask.png';
+let obstacle = new Image();
+obstacle.src = './img/covid19.png';
+let mask = new Image();
+mask.src = './img/face-mask.png';
 
 function startGame() {
     bgLoop.play();
@@ -62,7 +57,6 @@ function getKeyUp(event) {
 function updateCanvas() {
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
     background.show();
     character.show();
     character.walk();
@@ -72,7 +66,6 @@ function updateCanvas() {
     background.frames++;
     character.lives > 28 ? counter-- : null;
     showScore();
-    showImages();
     increaseDifficulty();
     requestId = requestAnimationFrame(updateCanvas);
     character.checkCrash();

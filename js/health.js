@@ -6,7 +6,6 @@ let health = {
         let singleItem = {
             x: canvas.width,
             y: 250,
-            img: new Image(),
             width: 80,
             height: 80
         }
@@ -16,8 +15,7 @@ let health = {
         this.item.forEach(obs => {
             ctx.save();
             obs.x -= this.speedX;
-            obs.img.src = './img/face-mask.png';
-            ctx.drawImage(obs.img, obs.x, obs.y, obs.width, obs.height);
+            ctx.drawImage(mask, obs.x, obs.y, obs.width, obs.height);
             ctx.restore();
         });
     }

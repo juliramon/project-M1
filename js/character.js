@@ -1,5 +1,4 @@
 let character = {
-    img: new Image(),
     x: 0,
     y: 240,
     width: 110,
@@ -16,11 +15,9 @@ let character = {
     },
     show: function () {
         if (character.lives > 28) {
-            this.img.src = './img/doctor-mask.png';
-            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+            ctx.drawImage(charMask, this.x, this.y, this.width, this.height);
         } else if (character.lives <= 28) {
-            this.img.src = './img/doctor.png';
-            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+            ctx.drawImage(char, this.x, this.y, this.width, this.height);
         }
     },
     newPos: function () {
