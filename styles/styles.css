@@ -6,6 +6,18 @@
     --yellow: #f2c600;
 }
 
+#overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+    opacity: 1;
+    transition: .3s opacity;
+    z-index: 9999;
+}
+
 button {
     background-color: var(--main-color);
     border-radius: 10px;
@@ -128,7 +140,7 @@ button#pause {
 img#pause {
     width: 8px;
     position: relative;
-    top: 2px;
+    top: 1px;
     margin-right: 2px;
 }
 

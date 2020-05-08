@@ -1,3 +1,7 @@
+window.onload = function () {
+    document.getElementById('overlay').style.visibility = 'hidden';
+}
+
 let handleVisibilityChange = () => document.hidden ? pauseGame() : null;
 document.addEventListener('visibilitychange', handleVisibilityChange);
 let buttonPlay, canvasWrapper, inputWrapper, canvas, ctx, playerName, buttonPause, buttonRepeat, checkPause;
